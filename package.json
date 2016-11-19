@@ -1,0 +1,26 @@
+{
+  "name": "secret-santa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+   "express": "^4.14.0",
+   "bcrypt": "^0.8.5",
+   "bcrypt-nodejs": "0.0.3",
+   "body-parser": "~1.14.2",
+   "cookie-parser": "^1.0.1",
+   "cors": "^2.7.1",
+   "ejs": "~2.3.3",
+   "express-ejs-layouts": "^2.0.0",
+   "method-override": "^2.3.5",
+   "moment": "^2.11.1",
+   "mongoose": "4.1.1",
+   "mongoose-timestamp": "^0.5.0",
+   "morgan": "~1.0.0"
+  }
+}
