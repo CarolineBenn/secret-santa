@@ -1,7 +1,6 @@
 var express    = require('express');
 var app        = express();
 
-var pairs = [];
 var secretSantas = [
   {
     name: 'Snowy',
@@ -13,15 +12,15 @@ var secretSantas = [
   },
   {
     name: 'Holley',
-    fullName: 'Kimberley S',
-    email: 'Kimberley@Smith.co.uk',
+    fullName: 'Holley',
+    email: 'Holley@Holley.co.uk',
     address: '321 Other Steet,\n Northampton,\n Northants,\n POSTCODE',
     isSanta: false,
     isSantee: false
   },
   {
     name: 'Lucerne',
-    fullName: 'Nikita W',
+    fullName: 'Lucerne',
     email: 'test@iamlucerne.com',
     address: 'Somewhere',
     isSanta: false ,
@@ -29,8 +28,8 @@ var secretSantas = [
   },
   {
     name: 'Fische',
-    fullName: 'Em V',
-    email: 'emily@fische.com',
+    fullName: 'Fische',
+    email: 'Fische@fische.com',
     address: 'Bath',
     isSanta: false ,
     isSantee: false
@@ -38,48 +37,40 @@ var secretSantas = [
   {
     name: 'Ayah',
     fullName: 'Ayaaaaah',
-    email: 'ayah@hayh.com',
+    email: 'ayah@ayah.com',
     address: 'France',
     isSanta: false ,
     isSantee: false
   },
   {
     name: 'Totem',
-    fullName: 'Charlotte W',
-    email: 'Charlotte@jelly.com',
-    address: 'Essex',
+    fullName: 'Totem',
+    email: 'Totem@Totem.com',
+    address: 'A place',
     isSanta: false ,
     isSantee: false
   },
   {
     name: 'Finella',
-    fullName: 'Alice H',
-    email: 'scotland@alice.com',
+    fullName: 'Finella',
+    email: 'scotland@Finella.com',
     address: 'Scotland',
     isSanta: false ,
     isSantee: false
   },
   {
     name: 'Chibbi',
-    fullName: 'Kelleh D',
-    email: 'chibbi@x.com',
+    fullName: 'Chibbi',
+    email: 'chibbi@Chibbi.com',
     address: 'The North',
     isSanta: false ,
     isSantee: false
   },
   {
     name: 'Reuben',
-    fullName: 'Suzi W',
-    email: 'r@b.com',
-    address: 'Surrey',
-    isSanta: false ,
-    isSantee: false
-  },
-  {
-    name: "Tracy",
-    fullName: "Tracy Wu",
-    email: "Tracy@Tracywu.com",
-    address: "Round 'ere parts",
+    fullName: 'Reuben',
+    email: 'Reuben@Reuben.com',
+    address: 'South-west',
     isSanta: false ,
     isSantee: false
   }
@@ -120,9 +111,9 @@ function checkSantaSanteeNames(pickedSanta){
 function start(secretSantas){
 
   for (var i = 0; i < secretSantas.length; i++){
-    console.log("********* Current santa is " + secretSantas[key].name)
+    console.log("********* Current santa is " + secretSantas[i].name)
 
-    var pickedSanta  = secretSantas[key]; // This is the current Santa.
+    var pickedSanta  = secretSantas[i]; // This is the current Santa.
     
     while (pickedSanta.isSanta == false) {
 
@@ -132,12 +123,19 @@ function start(secretSantas){
         pairUp(pickedSanta, pickedSantee);
         pickedSanta.isSanta   == true;
         pickedSantee.isSantee == true;
+
+        console.log("pickedSanta: " + pickedSanta.name)
+        console.log("pickedSantee: " + pickedSantee.name)
+
         break;
       } else {
-        // console.log("*********** THERE IS A CLASH *************");
-        // console.log("between " + pickedSanta.name + " and " + pickedSantee.name)
-        console.log("Ooooooooooooh shit, yo!")
-        start(secretSantas)
+          console.log("ERROR: pickedSanta: " + pickedSanta.name + ", pickedSantee: " + pickedSantee.name)
+          for (var i = 0; i < secretSantas.length; i++){
+            pickedSanta.isSanta   == false;
+            pickedSantee.isSantee == false;
+          }  
+          start(secretSantas)
+        break;
       }    
     }
   }
